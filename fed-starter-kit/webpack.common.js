@@ -9,7 +9,8 @@ module.exports = {
     entry: {
         main: './src/index.js',
         vendor: [
-            'react'
+            'react',
+            'react-dom'
         ]
     },
     output: {
@@ -42,27 +43,24 @@ module.exports = {
     ],
     module: {
         rules: [{
-                test: /\.js$/,
+            test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env']
-                    }
+                loader: 'babel-loader', 
+                query: {
+                    presets: ['env','stage-0','react']
                 }
             },
             {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract({
-                    fallback: { loader: 'style-loader' },
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
                     use: [{
-                        loader: 'css-loader',
-                        options: {
-                            context: '/',
-                            name: '[name].[hash:8].[ext]'
-                        }
-                    }]
-                }),
+                        loader: "css-loader"
+                    }, {
+                        loader: "sass-loader"
+                    }],
+                    // 在开发环境使用 style-loader
+                    fallback: "style-loader"
+                })
             },
             {
                 test: /\.(png|jpg|gif|woff(2)?|eot|ttf|otf|svg)$/,
