@@ -7,6 +7,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = merge(common, {
     devtool: 'source-map',
+    output: {
+        filename: '[name].[chunkhash:8].js',
+    },
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new UglifyJSPlugin({

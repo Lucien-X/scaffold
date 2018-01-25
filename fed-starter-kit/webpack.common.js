@@ -14,8 +14,9 @@ module.exports = {
         ]
     },
     output: {
-        filename: '[name].[chunkhash:8].js',
-        path: path.resolve(__dirname, 'dist')
+        filename: '[name].[hash:8].js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
     },
     plugins: [
         new webpack.NamedModulesPlugin(),
@@ -50,6 +51,11 @@ module.exports = {
                     presets: ['env','stage-0','react']
                 }
             },
+            // { 
+            //     test: /\.scss$/,
+            //     use:['style-loader', 'css-loader', 'sass-loader'], // 3
+            //     exclude: /node_modules/ 
+            // },
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
