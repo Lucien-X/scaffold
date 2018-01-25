@@ -51,23 +51,23 @@ module.exports = {
                     presets: ['env','stage-0','react']
                 }
             },
-            // { 
-            //     test: /\.scss$/,
-            //     use:['style-loader', 'css-loader', 'sass-loader'], // 3
-            //     exclude: /node_modules/ 
-            // },
-            {
+            { 
                 test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    use: [{
-                        loader: "css-loader"
-                    }, {
-                        loader: "sass-loader"
-                    }],
-                    // 在开发环境使用 style-loader
-                    fallback: "style-loader"
-                })
+                use:['style-loader', 'css-loader', 'sass-loader'], // 3
+                exclude: /node_modules/ 
             },
+            // {
+            //     test: /\.scss$/,
+            //     use: ExtractTextPlugin.extract({
+            //         use: [{
+            //             loader: "css-loader"
+            //         }, {
+            //             loader: "sass-loader"
+            //         }],
+            //         // 在开发环境使用 style-loader
+            //         fallback: "style-loader"
+            //     })
+            // },
             {
                 test: /\.(png|jpg|gif|woff(2)?|eot|ttf|otf|svg)$/,
                 loader: 'url-loader',
