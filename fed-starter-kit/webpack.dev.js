@@ -60,7 +60,20 @@ module.exports = {
             },
             { 
                 test: /\.scss$/,
-                use:['style-loader', 'css-loader', 'sass-loader'],
+                use:[
+                    'style-loader', 
+                    'css-loader', 
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                          sourceMap: true,
+                          config: {
+                            path: 'postcss.config.js'  // 这个得在项目根目录创建此文件
+                          }
+                        }
+                    },
+                    'sass-loader',
+                ],
                 exclude: /node_modules/,
             },
             {

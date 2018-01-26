@@ -1,4 +1,12 @@
-body{
-    background-color: black;
-    color: #eee;
+@import '../node_modules/fonts.css/fonts.scss';
+@import '../node_modules/normalize.css/normalize.css';
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: bisque;
+    color: #000;
+
+    @include font-hei();
 }
