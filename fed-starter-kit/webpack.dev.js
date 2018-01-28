@@ -6,22 +6,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './src/index.jsx',
-    vendor: [
-      'react',
-      'react-dom',
-    ],
+    main: ['react-hot-loader/patch', './src/index.jsx'],
+    vendor: ['react', 'react-dom'],
   },
   output: {
     filename: '[name].[hash:8].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: 'http://localhost:7000/',
   },
   resolve: {
     extensions: ['.js', '.json', '.jsx'],
   },
   plugins: [
-    new webpack.NamedModulesPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+      },
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
     }),
@@ -42,12 +43,8 @@ module.exports = {
         removeStyleLinkTypeAttributes: true,
       },
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development'),
-      },
-    }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
   ],
   module: {
     rules: [
@@ -55,9 +52,6 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
-        query: {
-          presets: ['env', 'stage-0', 'react'],
-        },
       },
       {
         test: /\.scss$/,
@@ -91,6 +85,7 @@ module.exports = {
   devtool: 'inline-source-map',
   watch: true,
   devServer: {
+    port: 7000,
     historyApiFallback: true, // 404s will fallback to /index.html
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
@@ -102,6 +97,7 @@ module.exports = {
     // useLocalIp: true,
     headers: {
       Author: 'Lucien-X',
+      'Access-Control-Allow-Origin': '*',
     },
     noInfo: true,
     clientLogLevel: 'none',

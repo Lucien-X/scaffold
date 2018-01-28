@@ -7,7 +7,7 @@ class App extends Component {
     };
 
     static defaultProps = {
-      hello: '如果你看到这行字，说明开发环境Running无误...',
+      hello: '开发环境运行中~',
     };
 
     constructor(props, context) {
@@ -16,7 +16,7 @@ class App extends Component {
     }
     render() {
       return (
-        <div>{this.props.hello}</div>
+        <h1>{this.props.hello}</h1>
       );
     }
 }

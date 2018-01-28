@@ -9,10 +9,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   entry: {
     main: './src/index.jsx',
-    vendor: [
-      'react',
-      'react-dom',
-    ],
+    vendor: ['react', 'react-dom'],
   },
   output: {
     filename: '[name].[chunkhash:8].js',
@@ -23,6 +20,11 @@ module.exports = {
     extensions: ['.js', '.json', '.jsx'],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -49,11 +51,6 @@ module.exports = {
     new UglifyJSPlugin({
       sourceMap: true,
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
   ],
   module: {
     rules: [
@@ -61,9 +58,6 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
-        query: {
-          presets: ['env', 'stage-0', 'react'],
-        },
       },
       {
         test: /\.scss$/,

@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import { AppContainer } from 'react-hot-loader';
 
 import App from './containers/App';
+import './index.scss';
 
 const mountNode = document.getElementById('root');
-ReactDOM.render(<App />, mountNode);
+const render = (Component) => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    mountNode,
+  );
+};
+render(App);
 
-// 实现JS HMR必须代码
+// Webpack Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./containers/App', (...args) => {
-    console.log(App);
-  });
+  // 当App文件发生变化,触发重渲染
+  module.hot.accept('./containers/App', () => { render(App); });
 }

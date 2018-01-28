@@ -2,7 +2,7 @@
 
 作者：Lucien-X (正沧)
 
-最后修改时间：2018-01-27  01:50
+最后修改时间：2018-01-29  01:28
 
 
 
@@ -22,15 +22,23 @@
 
 ## 怎么用？
 
-开始开发：
+我们假设你已经安装了Node环境和Git命令行工具,并熟悉终端的操作
+
+请将npm源设为阿里源以保障墙内的下载速度
 
 ```bash
-npm run dev
+# 克隆源码
+git clone https://github.com/Lucien-X/scaffold.git
+# 进入项目目录
+cd ./scaffold/fed-starter-kit
+# 安装依赖
+npm install
+# 启动开发环境
+npm start
 ```
 
-打包代码：
-
 ```bash
+# 打包生产环境代码
 npm run build
 ```
 
@@ -65,3 +73,18 @@ npm run build
 | 本地接口模拟服务【暂未开发】          | express                          |
 | 发布到远端机器【暂未开发】           | ftp                              |
 
+## 建议
+
+### 集成开发环境
+
+IDE建议使用Visual Studio Code,并安装ESlint插件,在
+
+首选项 => 设置 => 用户设置
+
+的末尾添加下面这个设置,保存设置,并重启 VS Code以生效
+
+```json
+"eslint.autoFixOnSave": true
+```
+
+该项设置将在保存时,自动按照eslint标准对你的代码进行修正
