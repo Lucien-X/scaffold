@@ -63,6 +63,7 @@ npm run build
 | 自动引入静态资源到相应 HTML 页面     | html-webpack-plugin              |
 | 实时编译和刷新浏览器              | webpack-dev-server HMR           |
 | 自动给 css 添加浏览器内核前缀       | postcss-loader  autoprefixer     |
+| IE9及以上浏览器支持ES6新API,如Promise,Object.assign等      | babel-polyfill  |
 | 按需打包合并 js、css           | ExtractTextPlugin等               |
 | 压缩 js、css、html          | uglifyjs-webpack-plugin等         |
 | 图片路径处理、压缩、CssSprite     | url-loader等                      |

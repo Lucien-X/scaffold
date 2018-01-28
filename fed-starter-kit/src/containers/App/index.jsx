@@ -7,7 +7,7 @@ class App extends Component {
     };
 
     static defaultProps = {
-      hello: '开发环境运行中~',
+      hello: '开发环境运行中,环境说明请参看Readme~',
     };
 
     constructor(props, context) {

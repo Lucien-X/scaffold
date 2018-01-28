@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: ['react-hot-loader/patch', './src/index.jsx'],
+    main: ['react-hot-loader/patch', 'babel-polyfill', './src/index.jsx'],
     vendor: ['react', 'react-dom'],
   },
   output: {
@@ -92,7 +92,7 @@ module.exports = {
     hot: true,
     publicPath: '/',
     inline: true,
-    open: 'Google Chrome',
+    open: true,
     host: '0.0.0.0',
     // useLocalIp: true,
     headers: {
