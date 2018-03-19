@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Rect from '../../components/rect';
 
 class App extends Component {
     static propTypes = {
@@ -7,7 +8,7 @@ class App extends Component {
     };
 
     static defaultProps = {
-      hello: '开发环境运行中,环境说明请参看Readme~',
+      hello: '环境运行中,环境说明请参看README.md~',
     };
 
     constructor(props, context) {
@@ -16,7 +17,13 @@ class App extends Component {
     }
     render() {
       return (
-        <h1>{this.props.hello}</h1>
+        <div>
+          <p>{this.props.hello}</p>
+          <p>
+            Webpack Dashboard运行在 <a target="_blank" rel="noopener noreferrer" href="http://0.0.0.0:1337">http://0.0.0.0:1337</a>
+          </p>
+          {/* <Rect /> */}
+        </div>
       );
     }
 }

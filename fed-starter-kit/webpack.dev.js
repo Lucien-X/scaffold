@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const Jarvis = require('webpack-jarvis');
 
 module.exports = {
   entry: {
@@ -18,6 +18,9 @@ module.exports = {
     extensions: ['.js', '.json', '.jsx'],
   },
   plugins: [
+    new Jarvis({
+      port: 1337, // optional: set a port
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
